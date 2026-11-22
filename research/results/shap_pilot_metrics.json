@@ -1,0 +1,26 @@
+{
+  "experiment": "SentinelAI SHAP explanation pilot",
+  "dataset_rows_after_sampling": 15383,
+  "feature_count": 66,
+  "holdout_label": "PortScan",
+  "known_training_rows": 10537,
+  "known_test_rows": 3513,
+  "explained_alerts": 12,
+  "model": "Median imputation + 160-tree RandomForestClassifier",
+  "explainer": {
+    "method": "SHAP TreeExplainer",
+    "model_output": "probability",
+    "feature_perturbation": "interventional",
+    "background_rows": 60
+  },
+  "additivity_audit": {
+    "max_absolute_error": 1.4390459934787714e-8,
+    "mean_absolute_error": 6.6852495021289355e-9
+  },
+  "caveats": [
+    "Only known-class predicted alerts are explained.",
+    "No claim that withheld PortScan was detected.",
+    "SHAP is model attribution, not causal proof.",
+    "Capped pilot sample, not full dataset."
+  ]
+}

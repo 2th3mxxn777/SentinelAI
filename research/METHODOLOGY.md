@@ -36,3 +36,14 @@ For each alert, store the predicted class, classifier confidence, anomaly score,
 - Random splitting can leak temporal or scenario-specific patterns.
 - Feature distributions and label semantics may differ across datasets.
 - Threshold choice materially affects false-positive rate and must be predeclared.
+
+
+## Evidence retrieval and constrained language-model explanation
+- Treat SHAP output as model attribution, not a causal explanation.
+- Retrieve feature definitions by exact normalized feature-name or alias match from a curated, source-tracked glossary. Do not use fuzzy matching to silently resolve ambiguous fields.
+- Preserve the observed feature value, signed SHAP contribution, direction, and source identifier in a structured evidence object.
+- Keep dataset ground-truth labels separate from explanation evidence; they are for offline evaluation only.
+- A future LLM renderer may receive only the structured retrieved evidence. It must cite supplied source identifiers, preserve values and SHAP directions, avoid attack-family or intent claims unsupported by evidence, and abstain when evidence is insufficient.
+- Validate output structure and check every cited feature, source identifier, observed value, definition, and SHAP direction against the retrieved evidence.
+- Structural validation does not prove semantic faithfulness of free-text claims. Evaluate unsupported claims through claim-level annotation and human review before making hallucination-reduction claims.
+- Compare deterministic template and constrained LLM conditions on the same alerts. Report citation validity, unsupported claims per explanation, contradiction rate, abstention behavior, readability ratings, and latency.

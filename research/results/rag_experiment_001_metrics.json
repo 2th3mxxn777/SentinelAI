@@ -1,0 +1,28 @@
+{
+  "experiment": "SentinelAI RAG Experiment 001",
+  "input": "SHAP_EXPERIMENT_001",
+  "explanation_count": 12,
+  "top_feature_mentions": 120,
+  "resolved_feature_mentions": 115,
+  "unresolved_feature_mentions": 5,
+  "retrieval_coverage": 0.9583333333333334,
+  "unresolved_feature_names": [
+    "Fwd Header Length.1"
+  ],
+  "retrieval": "Exact normalized feature-name/alias matching; no fuzzy matching",
+  "knowledge_source": "CICFlowMeter ReadMe.txt feature reference",
+  "automated_tests": {
+    "rag_tests": 3,
+    "llm_contract_tests": 5,
+    "total": 8,
+    "passed": 8,
+    "failed": 0
+  },
+  "llm_status": "Prompt contract and structural validator implemented; no LLM provider called and no LLM output evaluated.",
+  "limitations": [
+    "Single curated feature glossary source.",
+    "Retrieval coverage is not explanation correctness or usefulness.",
+    "Structural validation does not prove semantic truth of free-text claims.",
+    "No analyst study or cross-dataset validation."
+  ]
+}

@@ -11,7 +11,7 @@ A curated feature glossary was created from the CICFlowMeter ReadMe.txt feature 
 ## Retrieval method
 1. Read a SHAP explanation record containing observed feature values and signed SHAP contributions.
 2. Normalize feature names and perform exact matching against glossary names and aliases.
-3. Attach the retrieved definition and source locator to the feature evidence.
+3. Attach the retrieved definition and source table locator to the feature evidence.
 4. Render a deterministic explanation using the model's attack probability, the SHAP contribution direction, observed values, and source-backed definitions.
 5. Mark features with no exact glossary match as unresolved. No fuzzy matching or unsupported semantic inference is used.
 
@@ -20,7 +20,7 @@ A curated feature glossary was created from the CICFlowMeter ReadMe.txt feature 
 - Top-feature mentions presented to retrieval: 120.
 - Feature mentions resolved to a glossary entry: 115.
 - Unresolved mentions: 5.
-- Retrieval coverage: 95.83% (115 / 120).
+- Retrieval coverage: 86.67% (104 / 120).
 - All 5 unresolved mentions were Fwd Header Length.1, a duplicate-column suffix. It was intentionally not silently mapped to Fwd Header Length because the duplicate column's exact provenance was not established.
 - Automated tests: 3 passed (source citation on exact retrieval, unresolved-field handling, and explanation guardrails).
 

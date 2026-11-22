@@ -61,3 +61,12 @@ A withheld dataset label is a **controlled unknown-class benchmark**, not proof 
 LLM/RAG explanations, evidence retrieval, explanation faithfulness evaluation, and independent cross-dataset validation remain future work. Do not invent or pre-fill experimental results.
 
 See `research/RESEARCH_PLAN.md`, `research/METHODOLOGY.md`, and `research/EXPERIMENT_LOG_TEMPLATE.md`.
+
+
+## Evidence-grounded retrieval pilot (deterministic RAG)
+After generating SHAP explanations, run:
+```powershell
+$env:PYTHONPATH = "src"
+python -m sentinelai.rag_explain --input experiments/results/explanations/shap_explanations.json --glossary knowledge/feature_glossary.json --output-dir experiments/results/rag_explanations
+```
+This retrieves exact feature definitions from the curated CICFlowMeter glossary and writes `rag_explanations.json` and `rag_explanations.md`. Unmatched or ambiguous fields are explicitly left unresolved. This is a deterministic retrieval baseline, not an LLM. Feature definitions explain what a field measures; they do not establish maliciousness.

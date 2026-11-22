@@ -3,11 +3,12 @@
   "input": "SHAP_EXPERIMENT_001",
   "explanation_count": 12,
   "top_feature_mentions": 120,
-  "resolved_feature_mentions": 115,
-  "unresolved_feature_mentions": 5,
-  "retrieval_coverage": 0.9583333333333334,
+  "resolved_feature_mentions": 104,
+  "unresolved_feature_mentions": 16,
+  "retrieval_coverage": 0.8666666666666667,
   "unresolved_feature_names": [
-    "Fwd Header Length.1"
+    "Fwd Header Length.1",
+    "Destination Port"
   ],
   "retrieval": "Exact normalized feature-name/alias matching; no fuzzy matching",
   "knowledge_source": "CICFlowMeter ReadMe.txt feature reference",
@@ -24,5 +25,6 @@
     "Retrieval coverage is not explanation correctness or usefulness.",
     "Structural validation does not prove semantic truth of free-text claims.",
     "No analyst study or cross-dataset validation."
-  ]
+  ],
+  "note": "Destination Port is intentionally unresolved because it is not defined in the cited CICFlowMeter feature-description source; Fwd Header Length.1 is a duplicate-column suffix with unresolved provenance."
 }

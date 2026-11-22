@@ -1,0 +1,43 @@
+{
+  "experiment": "CICIDS2017 pilot 001",
+  "dataset_archive": "MachineLearningCSV.zip",
+  "dataset_rows_full_archive": 2830743,
+  "pilot_rows": 159616,
+  "sampling": "Per-label capped random sample, max 30000 per label; rare classes retained in full",
+  "feature_count": 68,
+  "holdout_label": "PortScan",
+  "withheld_attack_count": 30000,
+  "random_seed": 42,
+  "model": {
+    "supervised": "Median imputation + RandomForestClassifier(n_estimators=150, class_weight=balanced_subsample)",
+    "anomaly": "Median imputation + StandardScaler + IsolationForest(n_estimators=100), fit on benign training flows",
+    "anomaly_threshold": "98th percentile of benign validation anomaly scores"
+  },
+  "withheld_class_metrics": {
+    "random_forest_recall": 0.004433333333333333,
+    "random_forest_alerts": 133,
+    "isolation_forest_recall": 0,
+    "isolation_forest_alerts": 0,
+    "hybrid_or_recall": 0.004433333333333333,
+    "hybrid_or_alerts": 133
+  },
+  "confusion_matrix_labels": [
+    "benign",
+    "attack"
+  ],
+  "confusion_matrix": [
+    [
+      7339,
+      161
+    ],
+    [
+      29883,
+      25021
+    ]
+  ],
+  "caveats": [
+    "Pilot sample only; capped sampling changes natural class proportions.",
+    "Withheld CICIDS2017 attack class is a controlled unknown-class proxy, not proof of real-world zero-day detection.",
+    "No cross-dataset validation or LLM/RAG explanation evaluation has been completed."
+  ]
+}

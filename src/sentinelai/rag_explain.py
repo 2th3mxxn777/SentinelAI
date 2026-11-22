@@ -35,7 +35,7 @@ def explain_record(record: dict[str, Any], glossary: dict[str, Any]) -> dict[str
             "shap_value_attack_probability": item.get("shap_value_attack_probability"),
             "direction": item.get("direction"), "definition": doc["definition"],
             "source_id": source["source_id"], "source_title": source["title"],
-            "source_url": source["url"], "source_lines": doc["source_lines"]
+            "source_url": source["url"], "source_location": doc["source_location"]
         })
     probability = float(record["attack_probability"])
     decision = "crosses" if probability >= 0.5 else "does not cross"
@@ -85,7 +85,7 @@ def run(input_path: Path, glossary_path: Path, output_dir: Path) -> dict[str, An
         md += [f"## Alert {e['explanation_id']}", "", e["summary"], "", "Retrieved feature evidence:"]
         for f in e["retrieved_evidence"]:
             sign = "increased" if float(f["shap_value_attack_probability"] or 0) > 0 else "decreased"
-            md.append(f"- **{f['feature']} = {f['observed_value']}** — {f['definition']} SHAP {sign} attack probability by {float(f['shap_value_attack_probability']):.6f}. [Source: {f['source_id']}, lines {f['source_lines']}]({f['source_url']})")
+            md.append(f"- **{f['feature']} = {f['observed_value']}** — {f['definition']} SHAP {sign} attack probability by {float(f['shap_value_attack_probability']):.6f}. [Source: {f['source_id']}, {f['source_location']}]({f['source_url']})")
         if e["unresolved_features"]:
             md.append("- **Not explained (no exact glossary match):** " + ", ".join(e["unresolved_features"]))
         md += ["", "> SHAP attribution is not causal evidence. Feature definitions alone do not establish maliciousness.", ""]

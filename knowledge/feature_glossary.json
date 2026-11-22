@@ -1,49 +1,368 @@
 {
-  "source":{"source_id":"CICFlowMeter-README-feature-list","title":"CICFlowMeter ReadMe.txt — List of extracted features and descriptions","url":"https://github.com/jordan178169/CICFlowMeter/blob/master/ReadMe.txt","accessed":"2026-11-22","evidence_location":"Feature list, lines 384-512 in repository view","scope_note":"Definitions describe CICFlowMeter feature semantics; they do not define maliciousness or a threat verdict."},
-  "features":[
-    {"name":"Flow Duration","aliases":["Flow Duration","Flow duration"],"definition":"Duration of the network flow, measured in microseconds.","source_lines":"388"},
-    {"name":"Total Fwd Packets","aliases":["Total Fwd Packets","Total Fwd Packet"],"definition":"Total number of packets travelling in the forward direction of the bidirectional flow.","source_lines":"390"},
-    {"name":"Total Bwd Packets","aliases":["Total Bwd Packets","Total Bwd packets"],"definition":"Total number of packets travelling in the backward direction of the bidirectional flow.","source_lines":"392"},
-    {"name":"Total Length of Fwd Packets","aliases":["Total Length of Fwd Packets","Total Length of Fwd Packet"],"definition":"Total size of packets travelling in the forward direction.","source_lines":"394"},
-    {"name":"Total Length of Bwd Packets","aliases":["Total Length of Bwd Packets","Total Length of Bwd Packet"],"definition":"Total size of packets travelling in the backward direction.","source_lines":"396"},
-    {"name":"Fwd Packet Length Min","aliases":["Fwd Packet Length Min"],"definition":"Minimum packet size observed in the forward direction.","source_lines":"398"},
-    {"name":"Fwd Packet Length Max","aliases":["Fwd Packet Length Max"],"definition":"Maximum packet size observed in the forward direction.","source_lines":"400"},
-    {"name":"Fwd Packet Length Mean","aliases":["Fwd Packet Length Mean"],"definition":"Mean packet size in the forward direction.","source_lines":"402"},
-    {"name":"Fwd Packet Length Std","aliases":["Fwd Packet Length Std"],"definition":"Standard deviation of packet sizes in the forward direction.","source_lines":"402"},
-    {"name":"Bwd Packet Length Mean","aliases":["Bwd Packet Length Mean"],"definition":"Mean packet size in the backward direction.","source_lines":"408"},
-    {"name":"Bwd Packet Length Std","aliases":["Bwd Packet Length Std"],"definition":"Standard deviation of packet sizes in the backward direction.","source_lines":"410"},
-    {"name":"Flow Bytes/s","aliases":["Flow Bytes/s"],"definition":"Number of bytes transferred in the flow per second.","source_lines":"412"},
-    {"name":"Flow Packets/s","aliases":["Flow Packets/s"],"definition":"Number of packets transferred in the flow per second.","source_lines":"414"},
-    {"name":"Flow IAT Mean","aliases":["Flow IAT Mean"],"definition":"Mean time between consecutive packets in the flow; IAT means inter-arrival time.","source_lines":"415"},
-    {"name":"Flow IAT Std","aliases":["Flow IAT Std"],"definition":"Standard deviation of packet inter-arrival times in the flow.","source_lines":"417"},
-    {"name":"Flow IAT Max","aliases":["Flow IAT Max"],"definition":"Maximum packet inter-arrival time in the flow.","source_lines":"419"},
-    {"name":"Fwd IAT Min","aliases":["Fwd IAT Min"],"definition":"Minimum time between consecutive packets in the forward direction.","source_lines":"423"},
-    {"name":"Fwd IAT Max","aliases":["Fwd IAT Max"],"definition":"Maximum time between consecutive packets in the forward direction.","source_lines":"425"},
-    {"name":"Fwd IAT Mean","aliases":["Fwd IAT Mean"],"definition":"Mean time between consecutive packets in the forward direction.","source_lines":"427"},
-    {"name":"Fwd IAT Std","aliases":["Fwd IAT Std"],"definition":"Standard deviation of time between consecutive packets in the forward direction.","source_lines":"428"},
-    {"name":"Fwd IAT Total","aliases":["Fwd IAT Total"],"definition":"Total time between packets in the forward direction.","source_lines":"430"},
-    {"name":"Fwd Header Length","aliases":["Fwd Header Length"],"definition":"Total number of bytes used for headers in the forward direction.","source_lines":"448"},
-    {"name":"Bwd Header Length","aliases":["Bwd Header Length"],"definition":"Total number of bytes used for headers in the backward direction.","source_lines":"450"},
-    {"name":"Fwd Packets/s","aliases":["Fwd Packets/s","FWD Packets/s"],"definition":"Number of packets per second in the forward direction.","source_lines":"452"},
-    {"name":"Bwd Packets/s","aliases":["Bwd Packets/s"],"definition":"Number of packets per second in the backward direction.","source_lines":"454"},
-    {"name":"Min Packet Length","aliases":["Min Packet Length"],"definition":"Minimum packet length observed in the flow.","source_lines":"456"},
-    {"name":"Max Packet Length","aliases":["Max Packet Length"],"definition":"Maximum packet length observed in the flow.","source_lines":"458"},
-    {"name":"Packet Length Mean","aliases":["Packet Length Mean"],"definition":"Mean packet length observed in the flow.","source_lines":"460"},
-    {"name":"Packet Length Variance","aliases":["Packet Length Variance"],"definition":"Variance of packet lengths observed in the flow.","source_lines":"463"},
-    {"name":"PSH Flag Count","aliases":["PSH Flag Count"],"definition":"Number of packets in the flow with the TCP PSH flag set.","source_lines":"471"},
-    {"name":"Average Packet Size","aliases":["Average Packet Size"],"definition":"Average size of packets in the flow.","source_lines":"482"},
-    {"name":"Avg Fwd Segment Size","aliases":["Avg Fwd Segment Size","Fwd Segment Size Avg"],"definition":"Average segment size observed in the forward direction.","source_lines":"484"},
-    {"name":"Avg Bwd Segment Size","aliases":["Avg Bwd Segment Size","Bwd Segment Size Avg"],"definition":"Average segment size observed in the backward direction.","source_lines":"486"},
-    {"name":"Subflow Fwd Packets","aliases":["Subflow Fwd Packets"],"definition":"Average number of packets in a subflow in the forward direction.","source_lines":"499"},
-    {"name":"Subflow Fwd Bytes","aliases":["Subflow Fwd Bytes"],"definition":"Average number of bytes in a subflow in the forward direction.","source_lines":"501"},
-    {"name":"Init_Win_bytes_forward","aliases":["Init_Win_bytes_forward","Fwd Init Win bytes"],"definition":"Total number of bytes sent in the initial window in the forward direction.","source_lines":"506"},
-    {"name":"Init_Win_bytes_backward","aliases":["Init_Win_bytes_backward","Bwd Init Win bytes"],"definition":"Total number of bytes sent in the initial window in the backward direction.","source_lines":"508"},
-    {"name":"act_data_pkt_fwd","aliases":["act_data_pkt_fwd","Fwd Act Data Pkts"],"definition":"Count of packets carrying at least one byte of TCP data payload in the forward direction.","source_lines":"510"},
-    {"name":"min_seg_size_forward","aliases":["min_seg_size_forward","Fwd Seg Size Min"],"definition":"Minimum segment size observed in the forward direction.","source_lines":"512"},
-    {"name":"Active Mean","aliases":["Active Mean"],"definition":"Mean time a flow remains active before becoming idle.","source_lines":"516"},
-    {"name":"Active Max","aliases":["Active Max"],"definition":"Maximum time a flow remains active before becoming idle.","source_lines":"517"},
-    {"name":"Idle Mean","aliases":["Idle Mean"],"definition":"Mean time a flow remains idle before becoming active again.","source_lines":"523"},
-    {"name":"Idle Max","aliases":["Idle Max"],"definition":"Maximum time a flow remains idle before becoming active again.","source_lines":"525"},
-    {"name":"Destination Port","aliases":["Destination Port","Dst Port"],"definition":"Destination transport-layer port for the flow. This is endpoint metadata, not a behavioral conclusion.","source_lines":"FlowFeature.java: dst_pot (Dst Port)"}
+  "source": {
+    "source_id": "CICFlowMeter-README-feature-list",
+    "title": "CICFlowMeter ReadMe.txt — List of extracted features and descriptions",
+    "url": "https://github.com/jordan178169/CICFlowMeter/blob/master/ReadMe.txt",
+    "accessed": "2026-11-22",
+    "evidence_location": "List of extracted features and descriptions table; the source does not provide stable line numbers.",
+    "scope_note": "Definitions describe CICFlowMeter feature semantics; they do not define maliciousness or a threat verdict."
+  },
+  "features": [
+    {
+      "name": "Flow Duration",
+      "aliases": [
+        "Flow Duration",
+        "Flow duration"
+      ],
+      "definition": "Duration of the flow in microseconds.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Total Fwd Packets",
+      "aliases": [
+        "Total Fwd Packets",
+        "Total Fwd Packet"
+      ],
+      "definition": "Total packets in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Total Bwd Packets",
+      "aliases": [
+        "Total Bwd Packets",
+        "Total Bwd packets"
+      ],
+      "definition": "Total packets in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Total Length of Fwd Packets",
+      "aliases": [
+        "Total Length of Fwd Packets",
+        "Total Length of Fwd Packet"
+      ],
+      "definition": "Total size of packets in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Total Length of Bwd Packets",
+      "aliases": [
+        "Total Length of Bwd Packets",
+        "Total Length of Bwd Packet"
+      ],
+      "definition": "Total size of packets in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Packet Length Min",
+      "aliases": [
+        "Fwd Packet Length Min"
+      ],
+      "definition": "Minimum size of a packet in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Packet Length Max",
+      "aliases": [
+        "Fwd Packet Length Max"
+      ],
+      "definition": "Maximum size of a packet in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Packet Length Mean",
+      "aliases": [
+        "Fwd Packet Length Mean"
+      ],
+      "definition": "Mean size of packets in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Packet Length Std",
+      "aliases": [
+        "Fwd Packet Length Std"
+      ],
+      "definition": "Standard deviation of packet sizes in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Bwd Packet Length Mean",
+      "aliases": [
+        "Bwd Packet Length Mean"
+      ],
+      "definition": "Mean size of packets in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Bwd Packet Length Std",
+      "aliases": [
+        "Bwd Packet Length Std"
+      ],
+      "definition": "Standard deviation of packet sizes in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Flow Bytes/s",
+      "aliases": [
+        "Flow Bytes/s"
+      ],
+      "definition": "Number of flow bytes per second.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Flow Packets/s",
+      "aliases": [
+        "Flow Packets/s"
+      ],
+      "definition": "Number of flow packets per second.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Flow IAT Mean",
+      "aliases": [
+        "Flow IAT Mean"
+      ],
+      "definition": "Mean time between two packets sent in the flow.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Flow IAT Std",
+      "aliases": [
+        "Flow IAT Std"
+      ],
+      "definition": "Standard deviation of time between two packets sent in the flow.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Flow IAT Max",
+      "aliases": [
+        "Flow IAT Max"
+      ],
+      "definition": "Maximum time between two packets sent in the flow.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd IAT Min",
+      "aliases": [
+        "Fwd IAT Min"
+      ],
+      "definition": "Minimum time between two packets sent in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd IAT Max",
+      "aliases": [
+        "Fwd IAT Max"
+      ],
+      "definition": "Maximum time between two packets sent in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd IAT Mean",
+      "aliases": [
+        "Fwd IAT Mean"
+      ],
+      "definition": "Mean time between two packets sent in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd IAT Std",
+      "aliases": [
+        "Fwd IAT Std"
+      ],
+      "definition": "Standard deviation of time between two packets sent in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd IAT Total",
+      "aliases": [
+        "Fwd IAT Total"
+      ],
+      "definition": "Total time between two packets sent in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Header Length",
+      "aliases": [
+        "Fwd Header Length"
+      ],
+      "definition": "Total bytes used for headers in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Bwd Header Length",
+      "aliases": [
+        "Bwd Header Length"
+      ],
+      "definition": "Total number of bytes used for headers in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Fwd Packets/s",
+      "aliases": [
+        "Fwd Packets/s",
+        "FWD Packets/s"
+      ],
+      "definition": "Number of forward packets per second.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Bwd Packets/s",
+      "aliases": [
+        "Bwd Packets/s"
+      ],
+      "definition": "Number of backward packets per second.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Min Packet Length",
+      "aliases": [
+        "Min Packet Length"
+      ],
+      "definition": "Minimum length of a packet.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Max Packet Length",
+      "aliases": [
+        "Max Packet Length"
+      ],
+      "definition": "Maximum length of a packet.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Packet Length Mean",
+      "aliases": [
+        "Packet Length Mean"
+      ],
+      "definition": "Mean length of a packet.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Packet Length Variance",
+      "aliases": [
+        "Packet Length Variance"
+      ],
+      "definition": "Variance of packet length.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "PSH Flag Count",
+      "aliases": [
+        "PSH Flag Count"
+      ],
+      "definition": "Number of packets with the PUSH flag.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Average Packet Size",
+      "aliases": [
+        "Average Packet Size"
+      ],
+      "definition": "Average size of a packet.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Avg Fwd Segment Size",
+      "aliases": [
+        "Avg Fwd Segment Size",
+        "Fwd Segment Size Avg"
+      ],
+      "definition": "Average size observed in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Avg Bwd Segment Size",
+      "aliases": [
+        "Avg Bwd Segment Size",
+        "Bwd Segment Size Avg"
+      ],
+      "definition": "Average number of bytes bulk rate in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Subflow Fwd Packets",
+      "aliases": [
+        "Subflow Fwd Packets"
+      ],
+      "definition": "Average number of packets in a subflow in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Subflow Fwd Bytes",
+      "aliases": [
+        "Subflow Fwd Bytes"
+      ],
+      "definition": "Average number of bytes in a subflow in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Init_Win_bytes_forward",
+      "aliases": [
+        "Init_Win_bytes_forward",
+        "Fwd Init Win bytes"
+      ],
+      "definition": "Total number of bytes sent in the initial window in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Init_Win_bytes_backward",
+      "aliases": [
+        "Init_Win_bytes_backward",
+        "Bwd Init Win bytes"
+      ],
+      "definition": "Total number of bytes sent in the initial window in the backward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "act_data_pkt_fwd",
+      "aliases": [
+        "act_data_pkt_fwd",
+        "Fwd Act Data Pkts"
+      ],
+      "definition": "Count of packets with at least one byte of TCP data payload in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "min_seg_size_forward",
+      "aliases": [
+        "min_seg_size_forward",
+        "Fwd Seg Size Min"
+      ],
+      "definition": "Minimum segment size observed in the forward direction.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Active Mean",
+      "aliases": [
+        "Active Mean"
+      ],
+      "definition": "Mean time a flow was active before becoming idle.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Active Max",
+      "aliases": [
+        "Active Max"
+      ],
+      "definition": "Maximum time a flow was active before becoming idle.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Idle Mean",
+      "aliases": [
+        "Idle Mean"
+      ],
+      "definition": "Mean time a flow was idle before becoming active.",
+      "source_location": "List of extracted features and descriptions table"
+    },
+    {
+      "name": "Idle Max",
+      "aliases": [
+        "Idle Max"
+      ],
+      "definition": "Maximum time a flow was idle before becoming active.",
+      "source_location": "List of extracted features and descriptions table"
+    }
   ]
 }

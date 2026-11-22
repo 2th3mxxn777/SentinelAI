@@ -308,6 +308,48 @@ metrics = {
     }
 }
 
+
+# Save detailed test predictions.
+prediction_output = test[
+    ["attack_cat", "Label"]
+].copy()
+
+prediction_output["predicted_known_category"] = model.predict(X_test)
+prediction_output["unknown_entropy_score"] = entropy
+prediction_output["predicted_as_unknown"] = unknown_predicted
+
+prediction_output.to_csv(
+    OUTPUT_DIR / "experiment_007_test_predictions.csv",
+    index=False
+)
+
+# Save binary unseen-detection confusion matrix.
+confusion_output = pd.DataFrame(
+    [[tn, fp], [fn, tp]],
+    index=["Actual known", "Actual unseen"],
+    columns=["Predicted known", "Predicted unseen"]
+)
+
+confusion_output.to_csv(
+    OUTPUT_DIR / "experiment_007_confusion_matrix.csv"
+)
+
+# Save known-category classification report.
+report = classification_report(
+    known_test["attack_cat"],
+    known_predictions,
+    zero_division=0
+)
+
+with open(
+    OUTPUT_DIR / "experiment_007_classification_report.txt",
+    "w",
+    encoding="utf-8"
+) as f:
+    f.write(report)
+
+print("Detailed predictions, confusion matrix and report saved.")
+
 output_file = OUTPUT_DIR / "experiment_007_metrics.json"
 with open(output_file, "w", encoding="utf-8") as f:
     json.dump(metrics, f, indent=2)

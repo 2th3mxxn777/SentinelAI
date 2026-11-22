@@ -70,3 +70,12 @@ $env:PYTHONPATH = "src"
 python -m sentinelai.rag_explain --input experiments/results/explanations/shap_explanations.json --glossary knowledge/feature_glossary.json --output-dir experiments/results/rag_explanations
 ```
 This retrieves exact feature definitions from the curated CICFlowMeter glossary and writes `rag_explanations.json` and `rag_explanations.md`. Unmatched or ambiguous fields are explicitly left unresolved. This is a deterministic retrieval baseline, not an LLM. Feature definitions explain what a field measures; they do not establish maliciousness.
+
+
+## Optional constrained LLM explanation contract (provider-neutral)
+The repository includes `src/sentinelai/llm_contract.py` and `prompts/evidence_explanation_prompt.txt`. These define a strict evidence-only output contract and validator. They do not call an LLM provider. Run unit tests with:
+```powershell
+$env:PYTHONPATH = "src"
+python -m unittest discover -s tests -v
+```
+Structural validation rejects unsupported features, citations, values, and SHAP directions. It cannot prove semantic truth of free-text claims; human/claim-level evaluation remains necessary.

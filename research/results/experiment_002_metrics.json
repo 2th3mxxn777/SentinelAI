@@ -1,0 +1,68 @@
+{
+  "experiment": "SentinelAI Experiment 002",
+  "dataset": "CICIDS2017 MachineLearningCSV pilot sample",
+  "sample_rows": 26693,
+  "feature_count": 66,
+  "holdout_label": "PortScan",
+  "holdout_rows": 2500,
+  "random_seed": 42,
+  "results": [
+    {
+      "method": "Random Forest",
+      "holdout_recall": 0.0384,
+      "holdout_alerts": 96,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.016,
+      "known_attack_validation_recall": 0.9992625369
+    },
+    {
+      "method": "Isolation Forest",
+      "holdout_recall": 0,
+      "holdout_alerts": 0,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.0208,
+      "known_attack_validation_recall": 0.0495943953
+    },
+    {
+      "method": "Local Outlier Factor",
+      "holdout_recall": 0.0176,
+      "holdout_alerts": 44,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.0208,
+      "known_attack_validation_recall": 0.1353244838
+    },
+    {
+      "method": "RF + IF (OR)",
+      "holdout_recall": 0.0384,
+      "holdout_alerts": 96,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.0368,
+      "known_attack_validation_recall": 0.9992625369
+    },
+    {
+      "method": "RF + LOF (OR)",
+      "holdout_recall": 0.0548,
+      "holdout_alerts": 137,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.0368,
+      "known_attack_validation_recall": 0.9992625369
+    },
+    {
+      "method": "Calibrated RF + LOF fusion",
+      "holdout_recall": 0.0304,
+      "holdout_alerts": 76,
+      "holdout_n": 2500,
+      "benign_validation_fpr": 0.0208
+    }
+  ],
+  "fusion": {
+    "method": "Mean of benign-validation z-scores of RF attack probability and LOF anomaly score",
+    "threshold": 1.9770130418
+  },
+  "caveats": [
+    "Per-label capped pilot sample, not natural traffic prevalence.",
+    "Only PortScan withheld in this experiment.",
+    "Withheld label is a controlled unknown-class proxy, not proof of real-world zero-day detection.",
+    "No independent cross-dataset validation or analyst study completed."
+  ]
+}

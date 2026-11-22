@@ -2,19 +2,20 @@
 
 **Research prototype:** hybrid network intrusion detection with controlled unseen-attack evaluation and evidence-grounded explanations.
 
-> Status: initial implementation scaffold. No experimental results are claimed until the pipeline is run on a documented dataset.
+> Status: working research prototype with preliminary pilot experiments. Results are not full-dataset benchmarks.
 
 ## Research question
 Can a hybrid detector identify attack families withheld from supervised training, and can structured evidence support reliable explanations of its alerts?
 
-## Implemented scaffold
+## Implemented
 - CSV ingestion for CICIDS-style flow datasets
 - Label/feature cleanup
 - Random Forest known-class baseline
 - Isolation Forest anomaly model fitted only on benign training flows
-- Hybrid alert rule and evidence fields
-- Metrics and prediction exports
-- Deterministic evidence-bound explanation template
+- Hybrid alert rule and metrics/prediction exports
+- Detector comparison pilot (Random Forest, Isolation Forest, LOF, and score fusion)
+- Per-flow SHAP explanations for Random Forest predictions
+- SHAP contribution export with probability reconstruction audit
 
 ## Quick start (Windows PowerShell)
 ```powershell
@@ -32,17 +33,31 @@ $env:PYTHONPATH = "src"
 python -m sentinelai.experiment --data-dir datasets/raw/cicids2017 --list-labels
 ```
 
-Run a controlled withheld-label experiment (replace the label with an exact value printed above):
+Run a controlled withheld-label experiment:
 ```powershell
 python -m sentinelai.experiment --data-dir datasets/raw/cicids2017 --holdout-label "PortScan"
 ```
-Outputs: `experiments/results/metrics.json` and `predictions.csv`.
+
+## Generate local SHAP explanations
+Install dependencies from `requirements.txt`, then run:
+```powershell
+$env:PYTHONPATH = "src"
+python -m sentinelai.explainability --data-dir datasets/raw/cicids2017 --holdout-label "PortScan" --max-rows 30000 --explain-count 25
+```
+Outputs are written to `experiments/results/explanations/`:
+- `shap_explanations.json`: per-flow attack probability, base value, local SHAP contributions, and caveats.
+- `shap_feature_contributions.csv`: flattened top-feature contributions.
+
+Positive SHAP values increase the model's attack probability relative to the background reference; negative values decrease it. SHAP explains model behavior, not causality or malicious intent. The current script explains known-class test alerts; it does not claim that the held-out class was detected.
+
+## Research results
+- `research/results/PILOT_EXPERIMENT_001.md`: initial withheld-PortScan baseline.
+- `research/results/PILOT_EXPERIMENT_002.md`: anomaly detector comparison.
+- `research/results/SHAP_EXPERIMENT_001.md`: per-flow explainability pilot.
 
 ## Research design and limitations
-The selected attack label is excluded from supervised fitting. The anomaly model is fitted only on benign training examples. Its threshold is selected from benign validation scores before evaluating the withheld class.
+A withheld dataset label is a **controlled unknown-class benchmark**, not proof of detecting arbitrary real-world zero-day vulnerabilities. Pilot samples are capped by label and do not represent natural traffic prevalence. Inspect duplicates, temporal leakage, dataset limitations, class imbalance, and label quality before making strong claims.
 
-A withheld dataset label is a **controlled unknown-class benchmark**, not proof of detecting arbitrary real-world zero-day vulnerabilities. Inspect duplicates, temporal leakage, dataset limitations, class imbalance, and label quality before making strong claims.
-
-The current feature-importance explanation is global model evidence, not causal proof. The template explanation is deterministic, not an LLM. LLM/RAG explanation reliability remains a planned extension. Do not invent or pre-fill experimental results.
+LLM/RAG explanations, evidence retrieval, explanation faithfulness evaluation, and independent cross-dataset validation remain future work. Do not invent or pre-fill experimental results.
 
 See `research/RESEARCH_PLAN.md`, `research/METHODOLOGY.md`, and `research/EXPERIMENT_LOG_TEMPLATE.md`.

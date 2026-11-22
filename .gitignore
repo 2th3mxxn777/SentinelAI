@@ -8,3 +8,4 @@ node_modules/
 datasets/raw/
 datasets/processed/
 experiments/results/
+/data/

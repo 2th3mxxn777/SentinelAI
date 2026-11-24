@@ -1,0 +1,32 @@
+{
+  "experiment": "007B",
+  "encoding": "Ordinal",
+  "seed": 99,
+  "pilot_sample_seed": 42,
+  "holdout_category": "Reconnaissance",
+  "pilot_rows": 299999,
+  "training_rows": 191095,
+  "validation_rows": 47775,
+  "known_test_rows": 59718,
+  "unseen_test_rows": 1411,
+  "train_validation_test_group_leakage": false,
+  "feature_count_before_encoding": 41,
+  "encoded_feature_count": 41,
+  "known_accuracy": 0.9894839076995211,
+  "known_macro_f1": 0.4770379404060791,
+  "entropy_threshold": 0.30821496321015024,
+  "validation_benign_fpr": 0.010022297852364746,
+  "test_benign_fpr": 0.009876821391016975,
+  "unseen_recall": 0.892983699503898,
+  "unseen_precision": 0.49084534476042074,
+  "unseen_f1": 0.6334841628959276,
+  "unseen_roc_auc": 0.9942538933697093,
+  "unseen_average_precision": 0.7979384108310645,
+  "confusion_matrix": {
+    "true_known_pred_known": 58411,
+    "true_known_pred_unknown": 1307,
+    "true_unseen_pred_known": 151,
+    "true_unseen_pred_unknown": 1260
+  },
+  "training_seconds": 6.74
+}
